@@ -1,6 +1,7 @@
-package com.talyas.reactiveBloodBank.entities.db;
+package com.talyas.reactiveBloodBank.entities.models;
 
 
+import com.talyas.reactiveBloodBank.entities.models.enums.EBloodType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -18,11 +19,12 @@ public class Donor {
     int id;
 
     String name;
-    String bloodGroup;
+    EBloodType bloodType;
     String medicalReport;
     String address;
     int blood_bank_id;
     String contactNumber;
+
 
 
 }

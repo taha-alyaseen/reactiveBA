@@ -1,11 +1,10 @@
 package com.talyas.reactiveBloodBank.repositories;
 
-import com.talyas.reactiveBloodBank.entities.db.Donor;
+import com.talyas.reactiveBloodBank.entities.models.Donor;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 
 public interface DonorRepository extends ReactiveCrudRepository <Donor, Integer> {
-    public Mono<Donor> save(Donor donor);
-
+    Flux<Donor> findAllByBloodType(Enum bloodType);
 }
