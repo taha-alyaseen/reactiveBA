@@ -4,15 +4,17 @@ package com.talyas.reactiveBloodBank.entities.models;
 import com.talyas.reactiveBloodBank.entities.models.enums.EBloodType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.NoArgsConstructor;
 import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import javax.persistence.GenerationType;
 
 @Data
+@Entity
 @Table(name = "donor")
 @AllArgsConstructor
+@NoArgsConstructor
 public class Donor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +24,6 @@ public class Donor {
     EBloodType bloodType;
     String medicalReport;
     String address;
-    int blood_bank_id;
     String contactNumber;
-
-
-
 }
 

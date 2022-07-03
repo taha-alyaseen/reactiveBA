@@ -6,26 +6,19 @@ import com.talyas.reactiveBloodBank.entities.models.Patient;
 import com.talyas.reactiveBloodBank.mapper.PossibleDonorMapper;
 import com.talyas.reactiveBloodBank.repositories.DonorRepository;
 import com.talyas.reactiveBloodBank.repositories.PatientRepository;
-import com.talyas.reactiveBloodBank.service.donor.DonorHandler;
-import com.talyas.reactiveBloodBank.service.patient.PatientHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
-
-import java.util.List;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
-import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 
 @Configuration
