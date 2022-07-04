@@ -6,15 +6,24 @@ import com.talyas.reactiveBloodBank.entities.models.enums.EBloodType;
 import com.talyas.reactiveBloodBank.repositories.DonorRepository;
 import com.talyas.reactiveBloodBank.repositories.PatientRepository;
 import com.talyas.reactiveBloodBank.router.PossibleDonationRoute;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 
 import static org.mockito.Mockito.when;
 public class listAllPossibleDonationsTest {
+    @Autowired
+    private PossibleDonationRoute possibleDonationRoute;
+/*    @MockBean
+    private DonorRepository donorRepository;
+    @MockBean
+    private PatientRepository patientRepository;*/
     @Test
     public void shouldReturnAllPossibleDonations() {
         Patient[] patients = {
@@ -88,8 +97,8 @@ public class listAllPossibleDonationsTest {
         Mockito.when(donorRepository.findAllByBloodType(EBloodType.ABPositive)).thenReturn(donorsABPositiveFlux);
         Mockito.when(donorRepository.findAllByBloodType(EBloodType.APositive)).thenReturn(donorsAPositiveFlux);
 
-        WebTestClient testClient = WebTestClient.bindToController(new PossibleDonationRoute()).build();
+        WebTestClient testClient = WebTestClient.bindToRouterFunction(this.possibleDonationRoute.getPossibleDonation()).build();
 
-        testClient.get().uri("/possibleDonations").exchange().expectStatus().isOk().expectBody();
+        testClient.get().uri("/possibleDonations").exchange().expectStatus().isOk();
     }
 }

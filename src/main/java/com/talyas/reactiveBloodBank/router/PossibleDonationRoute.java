@@ -25,12 +25,12 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class PossibleDonationRoute {
 
     @Autowired
-    DonorRepository donorRepository;
+    private DonorRepository donorRepository;
     @Autowired
-    PatientRepository patientRepository;
+    private PatientRepository patientRepository;
 
     @Bean
-    RouterFunction<?> getPossibleDonation() {
+    public RouterFunction<?> getPossibleDonation() {
         return route(GET("/possibleDonations"), this::listAllPossibleDonations).
                 andRoute(GET("/possibleDonation/{patienID}"), req -> listPossibleDonations(req, req.pathVariable("patienID")));
     }
