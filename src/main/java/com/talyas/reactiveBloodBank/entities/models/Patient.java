@@ -4,12 +4,14 @@ import com.talyas.reactiveBloodBank.entities.models.enums.EBloodType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.*;
 
-@Entity
+
 @Data
-@Table(name = "patient")
+@Table("patients")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patient {
@@ -18,6 +20,7 @@ public class Patient {
     int id;
 
     String name;
+    @Enumerated(EnumType.STRING)
     EBloodType bloodType;
     String medicalReport;
     String address;

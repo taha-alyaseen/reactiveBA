@@ -17,13 +17,12 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 
 import static org.mockito.Mockito.when;
-public class listAllPossibleDonationsTest {
+public class listAllPossibleDonationsTest extends ReactiveBloodBankApplicationTests {
     @Autowired
     private PossibleDonationRoute possibleDonationRoute;
-/*    @MockBean
-    private DonorRepository donorRepository;
-    @MockBean
-    private PatientRepository patientRepository;*/
+
+
+
     @Test
     public void shouldReturnAllPossibleDonations() {
         Patient[] patients = {
@@ -97,8 +96,12 @@ public class listAllPossibleDonationsTest {
         Mockito.when(donorRepository.findAllByBloodType(EBloodType.ABPositive)).thenReturn(donorsABPositiveFlux);
         Mockito.when(donorRepository.findAllByBloodType(EBloodType.APositive)).thenReturn(donorsAPositiveFlux);
 
-        WebTestClient testClient = WebTestClient.bindToRouterFunction(this.possibleDonationRoute.getPossibleDonation()).build();
+        WebTestClient testClient = WebTestClient.bindToRouterFunction(possibleDonationRoute.getPossibleDonation()).build();
 
-        testClient.get().uri("/possibleDonations").exchange().expectStatus().isOk();
+        testClient.get().uri("/possibleDonations")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody();
     }
 }

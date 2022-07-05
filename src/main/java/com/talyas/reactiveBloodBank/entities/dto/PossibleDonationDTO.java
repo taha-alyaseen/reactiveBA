@@ -1,25 +1,23 @@
 package com.talyas.reactiveBloodBank.entities.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.talyas.reactiveBloodBank.entities.models.Donor;
-import com.talyas.reactiveBloodBank.entities.models.enums.EBloodType;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import reactor.core.publisher.Flux;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
-public class PossibleDonationDTO implements Serializable {    
-    int id;
-    String patientName;
-    String patientsBloodTyp;
-    String patientsMedicalReport;
-    String patientsAddress;
-    String patientsContactNumber;
-    Flux<Donor> possibleDonors;
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class PossibleDonationDTO {
+    private int id;
+    private String patientName;
+    private String patientsBloodTyp;
+    private String patientsMedicalReport;
+    private String patientsAddress;
+    private String patientsContactNumber;
+    private List<Donor> possibleDonors;
 }
 
