@@ -15,7 +15,7 @@ import java.util.List;
 public class PossibleDonorMapper {
     public static Mono<PossibleDonationDTO> toPossibleDonationDTO(Patient patient, Flux<Donor> donors) {
         return donors.collectList().map(x -> {
-            List<Donor> donorList = new ArrayList<Donor>();
+            List<Donor> donorList = new ArrayList<>();
             donorList.addAll(x);
                 return new PossibleDonationDTO(
                         patient.getId(),

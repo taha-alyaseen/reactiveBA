@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class PossibleDonationDTO {
-    private int id;
+    private Long id;
     private String patientName;
     private String patientsBloodTyp;
     private String patientsMedicalReport;

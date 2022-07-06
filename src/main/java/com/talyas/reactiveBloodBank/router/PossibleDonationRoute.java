@@ -15,8 +15,11 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class PossibleDonationRoute {
 
-    @Autowired
     private PossibleDonationHandler handler;
+
+    public PossibleDonationRoute(PossibleDonationHandler handler) {
+        this.handler = handler;
+    }
 
     @Bean
     public RouterFunction<ServerResponse> getPossibleDonation() {

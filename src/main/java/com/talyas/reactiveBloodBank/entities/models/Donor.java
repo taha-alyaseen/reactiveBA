@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.relational.core.mapping.Table;
 
 
@@ -22,8 +21,9 @@ import javax.persistence.GenerationType;
 @NoArgsConstructor
 public class Donor {
     @Id
+    @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Long id;
     String name;
     @Enumerated(EnumType.STRING)
     EBloodType bloodType;
