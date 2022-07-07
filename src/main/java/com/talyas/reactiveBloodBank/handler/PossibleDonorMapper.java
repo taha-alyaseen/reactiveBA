@@ -3,8 +3,7 @@ package com.talyas.reactiveBloodBank.handler;
 import com.talyas.reactiveBloodBank.entities.dto.PossibleDonationDTO;
 import com.talyas.reactiveBloodBank.entities.models.Donor;
 import com.talyas.reactiveBloodBank.entities.models.Patient;
-import com.talyas.reactiveBloodBank.router.PossibleDonationRoute;
-import org.mapstruct.Mapper;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

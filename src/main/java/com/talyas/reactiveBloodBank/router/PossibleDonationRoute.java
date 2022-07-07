@@ -24,7 +24,8 @@ public class PossibleDonationRoute {
     @Bean
     public RouterFunction<ServerResponse> getPossibleDonation() {
         return route(GET("/possibleDonations"), handler::listAllPossibleDonations).
-                andRoute(GET("/possibleDonations/{patienID}"), req -> handler.getPossibleDonationById(req, req.pathVariable("patienID")));
+                andRoute(GET("/possibleDonations/{patienID}"), req -> handler.getPossibleDonationById(req, req.pathVariable("patienID")))
+                .andRoute(GET("/donors"), handler::listAllDonors);
     }
 
 

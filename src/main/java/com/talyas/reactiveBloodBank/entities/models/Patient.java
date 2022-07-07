@@ -15,9 +15,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patient {
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String name;

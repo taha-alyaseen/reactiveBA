@@ -8,11 +8,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 
 
 @Data
@@ -20,9 +18,8 @@ import javax.persistence.GenerationType;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Donor {
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
     @Enumerated(EnumType.STRING)

@@ -14,6 +14,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
+import java.time.Duration;
+
 @Component
 public class PossibleDonationHandler {
     PatientRepository patientRepository;
@@ -32,17 +34,24 @@ public class PossibleDonationHandler {
                 .body(patientFlux.flatMap(
                         patient -> Mono.just(patient)
                                 .map(patientMono -> {
-                                    return PossibleDonorMapper.toPossibleDonationDTO(patientMono, donorRepository.findAllByBloodType(patientMono.getBloodType()).take(10));
+                                    return PossibleDonorMapper.toPossibleDonationDTO(patientMono, donorRepository.findAllByBloodType(patientMono.getBloodType()));
                                 }).subscribeOn(Schedulers.parallel())
                                 .flatMap(a -> a)
                 ), PossibleDonationDTO.class);
+    }
+
+    // not needed just to try to return another object
+    public Mono<ServerResponse> listAllDonors(ServerRequest request) {
+
+        return ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM)
+                .body(donorRepository.findAll().delayElements(Duration.ofMillis(1000)), Donor.class);
     }
 
     public Mono<ServerResponse> getPossibleDonationById(ServerRequest request, String id) {
         Mono<Patient> patientMono = patientRepository.findById(Long.valueOf(id));
         return ServerResponse.ok()
                 .body(patientMono.map(x -> {
-                            Flux<Donor> possibleDonors = donorRepository.findAllByBloodType(x.getBloodType());
+                            Flux<Donor> possibleDonors = donorRepository.findAllByBloodType(x.getBloodType()).take(10);
                             return PossibleDonorMapper.toPossibleDonationDTO(x, possibleDonors);
                         }
                 ).flatMap(x -> x)

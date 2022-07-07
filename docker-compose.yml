@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  db:
+    image: mariadb:10.6
+    container_name: db
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/main/resources/data.sql:/docker-entrypoint-initdb.d/data.sql
+    environment:
+      MYSQL_DATABASE: bloodBankdb
+      MYSQL_USER: db_app
+      MYSQL_PASSWORD: db_app
+      MYSQL_ROOT_PASSWORD: root
+
+#  bloodbank:
+#    build: .
+#    restart: always
+#    ports:
+      - "8080:8080"
+#    depends_on:
+#       - db
+
