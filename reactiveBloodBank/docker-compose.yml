@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  db:
+  bloodBankdb:
     image: postgres:14.4
     container_name: db
     ports:
