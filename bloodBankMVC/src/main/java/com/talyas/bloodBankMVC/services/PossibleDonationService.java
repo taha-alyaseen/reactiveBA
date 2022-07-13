@@ -21,8 +21,8 @@ public class PossibleDonationService {
     private final PatientRepository patientRepository;
 
     public List<PossibleDonationDTO> listAllPossibleDonaitons(){
-        Pageable pagesize = PageRequest.of(1, 50);
-        List<Patient> allPatients= patientRepository.findAll(pagesize).toList();
+        Pageable pagesize = PageRequest.of(1, 2);
+        List<Patient> allPatients= patientRepository.findAll();
         return allPatients.stream().map(x -> PossibleDonationDTO.builder()
         .id(x.getId())
         .patientName(x.getName())

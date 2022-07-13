@@ -7,6 +7,7 @@ import com.talyas.reactiveBloodBank.repositories.DonorRepository;
 import com.talyas.reactiveBloodBank.repositories.PatientRepository;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
@@ -15,7 +16,7 @@ import reactor.core.scheduler.Schedulers;
 
 import java.time.Duration;
 
-@Component
+@Service
 public class PossibleDonationHandler {
     PatientRepository patientRepository;
 
@@ -34,7 +35,7 @@ public class PossibleDonationHandler {
                         patient -> Mono.just(patient)
                                 .map(patientMono -> {
                                     return PossibleDonorMapper.toPossibleDonationDTO(patientMono, donorRepository.findAllByBloodType(patientMono.getBloodType()));
-                                }).subscribeOn(Schedulers.parallel())
+                                })
                                 .flatMap(a -> a)
                 ), PossibleDonationDTO.class);
     }

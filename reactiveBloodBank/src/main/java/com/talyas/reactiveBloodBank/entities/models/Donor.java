@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.EnumType;
@@ -14,18 +15,24 @@ import javax.persistence.Enumerated;
 
 
 @Data
-@Table("donors")
+@Table("public.donors")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Donor {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column("id")
     Long id;
+    @Column("name")
     String name;
     @Enumerated(EnumType.STRING)
+    @Column("blood_type")
     EBloodType bloodType;
+    @Column("medical_report")
     String medicalReport;
+    @Column("address")
     String address;
-    String contactNumber;
+   @Column("contact_number")
+   String contactNumber;
 }
 
