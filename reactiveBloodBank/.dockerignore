@@ -1,0 +1,12 @@
+.git
+.m2
+.vscode
+docker-compose.yml
+.gitlab-ci.yml
+.gitignore
+README.md
+# gradle
+target
+Dockerfile
+.gradle
+build
