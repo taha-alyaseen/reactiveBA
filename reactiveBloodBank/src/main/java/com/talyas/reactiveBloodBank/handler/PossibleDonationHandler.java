@@ -1,8 +1,9 @@
 package com.talyas.reactiveBloodBank.handler;
 
-import com.talyas.reactiveBloodBank.entities.dto.PossibleDonationDTO;
+import com.talyas.reactiveBloodBank.entities.dtos.PossibleDonationDTO;
 import com.talyas.reactiveBloodBank.entities.models.Donor;
 import com.talyas.reactiveBloodBank.entities.models.Patient;
+import com.talyas.reactiveBloodBank.handler.Mappers.PossibleDonorMapper;
 import com.talyas.reactiveBloodBank.repositories.DonorRepository;
 import com.talyas.reactiveBloodBank.repositories.PatientRepository;
 import org.springframework.http.MediaType;
