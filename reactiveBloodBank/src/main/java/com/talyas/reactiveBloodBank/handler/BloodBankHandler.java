@@ -11,10 +11,8 @@ import com.talyas.reactiveBloodBank.handler.Mappers.BloodBankMapper;
 import com.talyas.reactiveBloodBank.repositories.BloodBankRepository;
 
 import lombok.RequiredArgsConstructor;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.lang.management.LockInfo;
 
 @RequiredArgsConstructor
 @Service
@@ -29,6 +27,7 @@ public class BloodBankHandler {
             .body(bloodBankRepository.findAll().map(bloodBankMapper::bloodBankToBloodBankDTO)
                     , BloodBankDTO.class);
   }
+  
   public Mono<ServerResponse> getDetailedBloodBankById(ServerRequest request, Long id) {
     return ServerResponse.ok()
             .body(Mono.zip(bloodBankRepository.findById(Long.valueOf(id)),bloodBagRepository.findAllByBloodBankId(id).count())
