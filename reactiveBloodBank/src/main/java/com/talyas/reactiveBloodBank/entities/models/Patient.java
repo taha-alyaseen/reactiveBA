@@ -17,7 +17,7 @@ import javax.persistence.Enumerated;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patient {
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
     @Column("id")
     Long id;

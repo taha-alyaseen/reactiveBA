@@ -9,8 +9,10 @@ import com.talyas.reactiveBloodBank.entities.models.BloodBank;
 @Mapper(componentModel = "spring")
 public interface BloodBankMapper {
   
-  @Mapping(source ="id", target="bloodBankDTO.bloodBankId")
-  @Mapping(source ="name", target="bloodBankDTO.bloodBankName")
-  BloodBankDTO toBloodBankDTO (BloodBank bloodBank);
+  @Mapping(source ="id", target="bloodBankId")
+  @Mapping(source ="name", target="bloodBankName")
+  BloodBankDTO bloodBankToBloodBankDTO(BloodBank bloodBank);
+
+
   
 }

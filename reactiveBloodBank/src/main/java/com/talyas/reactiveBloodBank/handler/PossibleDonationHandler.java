@@ -30,12 +30,12 @@ public class PossibleDonationHandler {
 
 
     public Mono<ServerResponse> listAllPossibleDonations(ServerRequest request) {
-        Flux<Patient> patientFlux = patientRepository.findAll();
-        return ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM)
+        Flux<Patient> patientFlux = patientRepository.findAll().take(100);
+        return ServerResponse.ok()
                 .body(patientFlux.flatMap(
                         patient -> Mono.just(patient)
                                 .map(patientMono -> {
-                                    return PossibleDonorMapper.toPossibleDonationDTO(patientMono, donorRepository.findAllByBloodType(patientMono.getBloodType()));
+                                    return PossibleDonorMapper.toPossibleDonationDTO(patientMono, donorRepository.findAllByBloodType(patientMono.getBloodType()).take(15));
                                 })
                                 .flatMap(a -> a)
                 ), PossibleDonationDTO.class);

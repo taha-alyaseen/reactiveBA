@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@Table("public.donors")
+@Table("public.blood_banks")
 @AllArgsConstructor
 @NoArgsConstructor
 public class BloodBank {

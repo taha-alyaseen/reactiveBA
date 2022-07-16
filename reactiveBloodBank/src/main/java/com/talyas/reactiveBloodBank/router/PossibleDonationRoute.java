@@ -1,6 +1,5 @@
 package com.talyas.reactiveBloodBank.router;
 
-import com.talyas.reactiveBloodBank.handler.BloodBankHandler;
 import com.talyas.reactiveBloodBank.handler.PossibleDonationHandler;
 
 import lombok.RequiredArgsConstructor;
@@ -18,14 +17,14 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class PossibleDonationRoute {
 
-    private BloodBankHandler handler;
+    private final PossibleDonationHandler handler;
 
  
 
     @Bean
     public RouterFunction<ServerResponse> getPossibleDonation() {
-        return route(GET("/bloodbanks"), handler::).
-                andRoute(GET("/possibleDonations/{patienID}"), req -> handler.getPossibleDonationById(req, req.pathVariable("patienID")))
+        return route(GET("/possibleDonations"), handler::listAllPossibleDonations)
+                .andRoute(GET("/possibleDonations/{patienID}"), req -> handler.getPossibleDonationById(req, req.pathVariable("patienID")))
                 .andRoute(GET("/donors"), handler::listAllDonors);
     }
 
