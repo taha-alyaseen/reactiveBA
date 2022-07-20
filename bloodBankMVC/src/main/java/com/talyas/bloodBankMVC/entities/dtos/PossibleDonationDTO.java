@@ -1,19 +1,16 @@
-package com.talyas.bloodBankMVC.entities.dto;
+package com.talyas.reactiveBloodBank.entities.dtos;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.talyas.bloodBankMVC.entities.models.Donor;
+import com.talyas.reactiveBloodBank.entities.models.Donor;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class PossibleDonationDTO {
     private Long id;
     private String patientName;
