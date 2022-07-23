@@ -1,37 +1,26 @@
-package com.talyas.reactiveBloodBank.entities.models;
+package com.talyas.bloodBankMVC.entities.models;
 
+import com.talyas.bloodBankMVC.entities.models.enums.EBloodType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
-import com.talyas.reactiveBloodBank.entities.models.enums.EBloodType;
-
-import java.time.LocalDate;
+import javax.persistence.*;
 
 @Data
-@Table("public.blood_bags")
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "blood_bags")
+@Entity
 public class BloodBag {
-  @Column("id")
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
   @Enumerated(EnumType.STRING)
-  @Column("blood_type")
   EBloodType bloodType;
-  @Column("time_of_recieving")
   String timeOfRecieving;
-  @Column("donor_id")
+  @Column(name = "donor_id")
   Long donorID;
-  @Column("blood_banks_id")
+  @Column(name = "blood_bank_id")
   Long bloodBankId;
 }

@@ -1,12 +1,11 @@
 package com.talyas.reactiveBloodBank;
 
 import com.talyas.reactiveBloodBank.entities.models.Donor;
-import com.talyas.reactiveBloodBank.entities.models.Patient;
+import com.talyas.reactiveBloodBank.entities.models.Seeker;
 import com.talyas.reactiveBloodBank.entities.models.enums.EBloodType;
 import com.talyas.reactiveBloodBank.repositories.DonorRepository;
-import com.talyas.reactiveBloodBank.repositories.PatientRepository;
+import com.talyas.reactiveBloodBank.repositories.SeekerRepository;
 import com.talyas.reactiveBloodBank.router.PossibleDonationRoute;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -18,29 +17,29 @@ public class listAllPossibleDonationsTest extends ReactiveBloodBankApplicationTe
 
 
 
-    //@Test
+/*    //@Test
     public void shouldReturnAllPossibleDonations() {
-        Patient[] patients = {
-                new Patient(1l,
+        Seeker[] seekers = {
+                new Seeker(1l,
                         "name",
                         EBloodType.ABNegative,
                         "medicalReport",
                         "address",
                         "contactNumber"),
-                new Patient(2l,
+                new Seeker(2l,
                         "name",
                         EBloodType.ABPositive,
                         "medicalReport",
                         "address",
                         "contactNumber"),
-                new Patient(3l,
+                new Seeker(3l,
                         "name",
                         EBloodType.APositive,
                         "medicalReport",
                         "address",
                         "contactNumber")
         };
-        Flux<Patient> patientFlux = Flux.just(patients);
+        Flux<Seeker> patientFlux = Flux.just(seekers);
         Donor[] donorsABNegative = {
                 new Donor(1l,
                         "name",
@@ -84,9 +83,9 @@ public class listAllPossibleDonationsTest extends ReactiveBloodBankApplicationTe
         Flux<Donor> donorsABNegativeFlux = Flux.just(donorsABNegative);
         Flux<Donor> donorsABPositiveFlux = Flux.just(donorsABPositive);
         Flux<Donor> donorsAPositiveFlux = Flux.just(donorsAPositive);
-        PatientRepository patientRepository = Mockito.mock(PatientRepository.class);
+        SeekerRepository seekerRepository = Mockito.mock(SeekerRepository.class);
         DonorRepository donorRepository = Mockito.mock(DonorRepository.class);
-        Mockito.when(patientRepository.findAll()).thenReturn(patientFlux);
+        Mockito.when(seekerRepository.findAll()).thenReturn(patientFlux);
         Mockito.when(donorRepository.findAllByBloodType(EBloodType.ABNegative)).thenReturn(donorsABNegativeFlux);
         Mockito.when(donorRepository.findAllByBloodType(EBloodType.ABPositive)).thenReturn(donorsABPositiveFlux);
         Mockito.when(donorRepository.findAllByBloodType(EBloodType.APositive)).thenReturn(donorsAPositiveFlux);
@@ -98,5 +97,5 @@ public class listAllPossibleDonationsTest extends ReactiveBloodBankApplicationTe
                 .expectStatus()
                 .isOk()
                 .expectBody();
-    }
+    }*/
 }

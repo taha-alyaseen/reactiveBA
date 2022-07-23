@@ -1,4 +1,4 @@
-package com.talyas.reactiveBloodBank.entities.dtos;
+package com.talyas.bloodBankMVC.entities.dtos;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.AllArgsConstructor;
@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class SeekerDTO {
-  Long seekerId;
-  String seekerName;
-  String seekerBloodType;
-  String seekerMedicalReport;
-  String seekerAddress;
-  String seekerContactNumber;
-  Long bloodBankID;
+  private Long seekerId;
+  private String seekerName;
+  private String seekerBloodType;
+  private String seekerMedicalReport;
+  private String seekerAddress;
+  private String seekerContactNumber;
+  private Long bloodBankID;
 }

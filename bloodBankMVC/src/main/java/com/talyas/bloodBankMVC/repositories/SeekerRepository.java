@@ -1,13 +1,15 @@
-package com.talyas.reactiveBloodBank.repositories;
+package com.talyas.bloodBankMVC.repositories;
 
-import com.talyas.reactiveBloodBank.entities.models.Seeker;
-
-import reactor.core.publisher.Flux;
-
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import com.talyas.bloodBankMVC.entities.models.Seeker;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
+import java.util.List;
+import java.util.Optional;
+
 @Repository
-public interface SeekerRepository extends ReactiveCrudRepository<Seeker, Long> {
-  Flux<Seeker> findAllByBloodBankID(Long id);
+public interface SeekerRepository extends JpaRepository<Seeker, Long> {
+  Optional<Seeker> findById(Long id);
+  List<Seeker> findAllByBloodBankID(Long id);
 }

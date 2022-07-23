@@ -1,13 +1,9 @@
-package com.talyas.reactiveBloodBank.entities.dtos;
+package com.talyas.bloodBankMVC.entities.dtos;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,5 +14,5 @@ public class BloodBankDetailedDTO{
   private String name;
   private String address;
   private String contactNumber;
-  private Long numberOfBloodBags;
+  private int numberOfBloodBags;
 }

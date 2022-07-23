@@ -1,4 +1,4 @@
-package com.talyas.reactiveBloodBank.entities.dtos;
+package com.talyas.bloodBankMVC.entities.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,5 +15,4 @@ public class CreateSeekerDTO {
   String seekerMedicalReport;
   String seekerAddress;
   String seekerContactNumber;
-  Long bloodBankID;
 }

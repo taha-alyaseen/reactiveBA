@@ -9,19 +9,19 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Table(name = "patients")
-@Entity
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Builder
+//@Table(name = "patients")
+//@Entity
 public class Patient {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+//   @GeneratedValue(strategy = GenerationType.IDENTITY)
+//   @Id
     private Long id;
 
     private String name;
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     EBloodType bloodType;
     private String medicalReport;
     private String address;

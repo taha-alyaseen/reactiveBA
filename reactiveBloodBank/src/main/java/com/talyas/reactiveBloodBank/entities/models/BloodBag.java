@@ -32,6 +32,6 @@ public class BloodBag {
   String timeOfRecieving;
   @Column("donor_id")
   Long donorID;
-  @Column("blood_banks_id")
+  @Column("blood_bank_id")
   Long bloodBankId;
 }

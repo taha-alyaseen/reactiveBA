@@ -5,4 +5,4 @@ datasources:
     access: proxy
     database: k6
     url: http://influxdb:8086
-    isDefault: truehboards
+    isDefault: true

@@ -1,31 +1,43 @@
 package com.talyas.reactiveBloodBank.handler;
 
+import com.talyas.reactiveBloodBank.entities.dtos.CreateSeekerDTO;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.accept.PathExtensionContentNegotiationStrategy;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import org.springframework.web.reactive.function.server.support.ServerRequestWrapper;
 
 import com.talyas.reactiveBloodBank.entities.dtos.SeekerDTO;
 import com.talyas.reactiveBloodBank.handler.Mappers.SeekerMapper;
-import com.talyas.reactiveBloodBank.repositories.PatientRepository;
+import com.talyas.reactiveBloodBank.repositories.SeekerRepository;
 
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
+
+import java.net.URI;
+
+import static org.springframework.http.MediaType.APPLICATION_NDJSON_VALUE;
+
 @RequiredArgsConstructor
 @Service
 public class SeekersHandler {
-  private final PatientRepository patientRepository;
+  private final SeekerRepository seekerRepository;
   private final SeekerMapper seekerMapper;
 
   public Mono<ServerResponse> listAllPatients(ServerRequest ServerRequest){
-    return ServerResponse.ok()
-    .body(patientRepository.findAll().map(seekerMapper::toSeekerDTO), SeekerDTO.class);
+    return ServerResponse.accepted().contentType(MediaType.TEXT_EVENT_STREAM)
+    .body(seekerRepository.findAll().map(seekerMapper::toSeekerDTO), SeekerDTO.class);
   }
 
-  public Mono<ServerResponse> listAllPatientsOfBloodBank(ServerRequest ServerRequest, Long id){
+  public Mono<ServerResponse> listAllSeekersInBloodBank(ServerRequest ServerRequest, Long id){
     return ServerResponse.ok()
-    .body(patientRepository.findAllByBloodBankID(id).map(seekerMapper::toSeekerDTO), SeekerDTO.class);
+    .body(seekerRepository.findAllByBloodBankID(id).map(seekerMapper::toSeekerDTO), SeekerDTO.class);
   }
-  
+
+  public Mono<ServerResponse> createNewSeeker(ServerRequest request) {
+  return request.bodyToMono(CreateSeekerDTO.class)
+          .flatMap(seeker -> seekerRepository.save(seekerMapper.createSeekerDTOtoSeerker(seeker)))
+          .flatMap(seeker -> ServerResponse.created(URI.create("/seekers/"+ seeker.getId())).contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromValue(seeker)));
+  }
 }

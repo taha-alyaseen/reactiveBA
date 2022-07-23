@@ -8,6 +8,6 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PatientRepository extends ReactiveCrudRepository<Seeker, Long> {
+public interface SeekerRepository extends ReactiveCrudRepository<Seeker, Long> {
   Flux<Seeker> findAllByBloodBankID(Long id);
 }

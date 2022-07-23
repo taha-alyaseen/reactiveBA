@@ -1,7 +1,7 @@
-package com.talyas.reactiveBloodBank.handler.Mappers;
+package com.talyas.bloodBankMVC.handler.Mappers;
 
-import com.talyas.reactiveBloodBank.entities.dtos.BloodBagDTO;
-import com.talyas.reactiveBloodBank.entities.models.BloodBag;
+import com.talyas.bloodBankMVC.entities.dtos.BloodBagDTO;
+import com.talyas.bloodBankMVC.entities.models.BloodBag;
 import org.mapstruct.Mapper;
 
 import java.util.List;

@@ -5,19 +5,23 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.talyas.reactiveBloodBank.entities.models.Donor;
 import lombok.AllArgsConstructor;
 
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class PossibleDonationDTO {
-    private Long id;
-    private String patientName;
-    private String patientsBloodTyp;
-    private String patientsMedicalReport;
-    private String patientsAddress;
-    private String patientsContactNumber;
-    private List<Donor> possibleDonors;
+    private Long seekerId;
+    private String seekerName;
+    private String seekerBloodTyp;
+    private String seekerMedicalReport;
+    private String seekerAddress;
+    private String seekerContactNumber;
+    private List<DonorDTO> possibleDonors;
+    private List<BloodBagDTO> availableBloodBags;
+
 }
 

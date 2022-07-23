@@ -22,17 +22,19 @@ public class Donor {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column("id")
-    Long id;
+    private  Long id;
     @Column("name")
-    String name;
+    private String name;
     @Enumerated(EnumType.STRING)
     @Column("blood_type")
-    EBloodType bloodType;
+    private EBloodType bloodType;
     @Column("medical_report")
-    String medicalReport;
+    private String medicalReport;
     @Column("address")
-    String address;
+    private String address;
    @Column("contact_number")
-   String contactNumber;
+    private String contactNumber;
+    @Column("blood_bank_id")
+    private Long bloodBankID;
 }
 

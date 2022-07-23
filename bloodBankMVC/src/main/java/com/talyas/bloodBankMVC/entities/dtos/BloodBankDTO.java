@@ -1,7 +1,6 @@
-package com.talyas.reactiveBloodBank.entities.dtos;
+package com.talyas.bloodBankMVC.entities.dtos;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

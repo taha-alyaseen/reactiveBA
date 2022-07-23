@@ -1,11 +1,12 @@
-package com.talyas.reactiveBloodBank.repositories;
+package com.talyas.bloodBankMVC.repositories;
 
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import com.talyas.bloodBankMVC.entities.models.BloodBank;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.talyas.reactiveBloodBank.entities.models.BloodBank;
+import java.util.Optional;
 
 @Repository
-public interface BloodBankRepository extends ReactiveCrudRepository<BloodBank,Long>{
-  
+public interface BloodBankRepository extends JpaRepository<BloodBank, Long> {
+
 }

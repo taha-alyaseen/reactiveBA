@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class CreateSeekerDTO {
-  String name;
-  String bloodType;
-  String medicalReport;
-  String address;
-  String contactNumber;
+  String seekerName;
+  String seekerBloodType;
+  String seekerMedicalReport;
+  String seekerAddress;
+  String seekerContactNumber;
+  Long bloodBankID;
 }

@@ -13,25 +13,27 @@ import javax.persistence.Enumerated;
 
 
 @Data
-@Table("public.patients")
+@Table("public.seekers")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Patient {
+public class Seeker {
 
     @Id
     @Column("id")
-    Long id;
+    private Long id;
 
     @Column("name")
-    String name;
+    private String name;
     @Enumerated(EnumType.STRING)
     @Column("blood_type")
-    EBloodType bloodType;
-     @Column("medical_report")
-     String medicalReport;
+    private EBloodType bloodType;
+    @Column("medical_report")
+    private String medicalReport;
     @Column("address")
-    String address;
+    private String address;
     @Column("contact_number")
-    String contactNumber;
+    private String contactNumber;
+    @Column("blood_bank_id")
+    private Long bloodBankID;
 }
 

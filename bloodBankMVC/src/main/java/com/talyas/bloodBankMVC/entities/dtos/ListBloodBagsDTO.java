@@ -1,6 +1,5 @@
-package com.talyas.reactiveBloodBank.entities.dtos;
+package com.talyas.bloodBankMVC.entities.dtos;
 
-import com.talyas.reactiveBloodBank.entities.models.BloodBag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

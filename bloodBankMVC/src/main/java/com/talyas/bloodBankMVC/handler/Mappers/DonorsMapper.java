@@ -9,14 +9,15 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper()
+@Mapper(componentModel = "spring")
 public interface DonorsMapper {
-    @Mapping(target="id", source ="seekerId")
-    @Mapping(target="name", source ="seekerName")
-    @Mapping(target="bloodType", source ="seekerBloodType")
-    @Mapping(target="medicalReport", source ="seekerMedica")
-    @Mapping(target="address", source ="seekerAddress")
-    @Mapping(target="contactNumber", source ="seekerContac")
-    @Mapping(target="bloodBankID", source ="bloodBankID")
+    @Mapping(source="id", target ="donorId")
+    @Mapping(source="name", target ="donorName")
+    @Mapping(source="bloodType", target ="donorBloodType")
+    @Mapping(source="medicalReport", target ="donorMedicalReport")
+    @Mapping(source="address", target ="donorAddress")
+    @Mapping(source="contactNumber", target ="donorContactNumber")
+    @Mapping(source="bloodBankID", target ="bloodBankID")
+    DonorDTO toDonorDto(Donor donors);
     List<DonorDTO> toDonorDtoList(List<Donor> donors);
 }

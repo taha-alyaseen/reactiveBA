@@ -1,18 +1,19 @@
-package com.talyas.reactiveBloodBank.entities.models;
+package com.talyas.bloodBankMVC.entities.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import javax.persistence.*;
 
 @Data
-@Table("public.blood_banks")
+@Table(name = "blood_banks")
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class BloodBank {
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
   String name;
   String address;
