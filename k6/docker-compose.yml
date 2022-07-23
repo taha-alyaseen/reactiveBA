@@ -22,6 +22,7 @@ services:
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_BASIC_ENABLED=false
+      - GF_USERS_DEFAULT_THEME=light
     volumes:
       - ./dashboards:/var/lib/grafana/dashboards
       - ./grafana-dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
@@ -35,4 +36,8 @@ services:
     environment:
       - K6_OUT=influxdb=http://influxdb:8086/k6
     volumes:
+<<<<<<< HEAD
       - ./scripts/ewoks.js:/scripts/ewoks.js
+=======
+      - ./scripts:/scripts
+>>>>>>> 2148fd87c8654f42d4d5793ba00ae21b8a871129
